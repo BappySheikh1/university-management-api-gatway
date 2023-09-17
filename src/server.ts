@@ -4,9 +4,8 @@ import config from './config';
 import logger from './shared/logger';
 import { RedisCLient } from './shared/redis';
 
-
 async function bootstrap() {
-  await RedisCLient.connect()
+  await RedisCLient.connect();
   const server: Server = app.listen(config.port, () => {
     logger.info(`Server running on port ${config.port}`);
   });
