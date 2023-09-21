@@ -9,7 +9,7 @@ const router = express.Router();
 
 router.post(
   '/',
-  auth(ENUM_USER_ROLE.SUPER_ADMIN,ENUM_USER_ROLE.ADMIN),
+  auth(ENUM_USER_ROLE.SUPER_ADMIN, ENUM_USER_ROLE.ADMIN),
   validateRequest(AcademicSemesterValidation.crateAcademicSemester),
   AcademicSemesterController.insertIntoDB
 );
@@ -17,10 +17,14 @@ router.get('/', AcademicSemesterController.getAllFromDB);
 router.get('/:id', AcademicSemesterController.getSingleDataFromDB);
 router.patch(
   '/:id',
-  auth(ENUM_USER_ROLE.SUPER_ADMIN,ENUM_USER_ROLE.ADMIN),
+  auth(ENUM_USER_ROLE.SUPER_ADMIN, ENUM_USER_ROLE.ADMIN),
   validateRequest(AcademicSemesterValidation.update),
   AcademicSemesterController.updateSingleDataFromDB
 );
-router.delete('/:id', AcademicSemesterController.deleteSingleDataFromDB);
+router.delete(
+  '/:id',
+  auth(ENUM_USER_ROLE.SUPER_ADMIN, ENUM_USER_ROLE.ADMIN),
+  AcademicSemesterController.deleteSingleDataFromDB
+);
 
 export const AcademicSemesterRoute = router;
