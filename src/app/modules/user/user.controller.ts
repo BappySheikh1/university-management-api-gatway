@@ -1,11 +1,19 @@
 import express, { Request, Response, NextFunction } from 'express';
 import { FileUploadHelper } from '../../../helpers/FileUploadHelper';
+import { UserService } from './user.service';
+import sendResponse from '../../../shared/response';
 
 const createStudent = async (req: Request, res: Response, next: NextFunction) => {
-    FileUploadHelper.uploadToCloudinary()
+  // console.log(req.file, req.body);
+  // FileUploadHelper.uploadToCloudinary()
+  try {
+    const result = await UserService.createStudent(req);
+    sendResponse(res, result);
+  } catch (error) {
+    next(error);
+  }
 };
 
-
 export const UserController = {
-    createStudent
+  createStudent
 };
