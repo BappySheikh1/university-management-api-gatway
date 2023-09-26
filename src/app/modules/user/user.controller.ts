@@ -14,6 +14,30 @@ const createStudent = async (req: Request, res: Response, next: NextFunction) =>
   }
 };
 
+const createFaculty = async (req: Request, res: Response, next: NextFunction) => {
+  // console.log(req.file, req.body);
+  // FileUploadHelper.uploadToCloudinary()
+  try {
+    const result = await UserService.createFaculty(req);
+    sendResponse(res, result);
+  } catch (error) {
+    next(error);
+  }
+};
+
+const createAdmin = async (req: Request, res: Response, next: NextFunction) => {
+  // console.log(req.file, req.body);
+  // FileUploadHelper.uploadToCloudinary()
+  try {
+    const result = await UserService.createAdmin(req);
+    sendResponse(res, result);
+  } catch (error) {
+    next(error);
+  }
+};
+
 export const UserController = {
-  createStudent
+  createStudent,
+  createFaculty,
+  createAdmin
 };
