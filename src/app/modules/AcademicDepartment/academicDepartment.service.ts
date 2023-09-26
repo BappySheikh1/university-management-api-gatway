@@ -13,7 +13,7 @@ const insertIntoDB = async (req: Request): Promise<IGenericResponse> => {
 };
 
 const getAllFromDB = async (req: Request): Promise<IGenericResponse> => {
-  const response: IGenericResponse = await HttpService.get(`/academic-departments`, {
+  const response: IGenericResponse = await HttpService.get(`/academic-departments/create-department`, {
     params: req.params,
     headers: {
       Authorization: req.headers.authorization
