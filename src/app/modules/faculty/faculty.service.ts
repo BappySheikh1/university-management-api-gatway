@@ -58,7 +58,7 @@ const updateOneInDB = async (req: Request): Promise<IGenericResponse> => {
         headers: {
             Authorization: req.headers.authorization
         }
-    });
+    }); 
     return response;
 };
 
