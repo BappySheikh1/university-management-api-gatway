@@ -13,11 +13,16 @@ import { BuildingRoutes } from '../modules/Building/Building.route';
 import { studentSemesterPaymentRoutes } from '../modules/studentSemesterPayment/studentSemesterPayment.route';
 import { studentEnrolledCourseRoutes } from '../modules/StudentEnrolledCourse/StudentEnrolledCourse.route';
 import { userRoutes } from '../modules/user/user.route';
+import { AuthenticationRoute } from '../modules/auth/auth.route';
 
 
 const router = express.Router();
 
 const moduleRoutes = [
+  {
+    path: '/auth',
+    routes: AuthenticationRoute
+  },
   {
     path: '/users',
     routes: userRoutes
